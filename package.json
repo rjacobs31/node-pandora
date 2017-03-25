@@ -5,7 +5,9 @@
   "main": "index.js",
   "dependencies": {
     "botpress": "0.x",
-    "botpress-discord": "^2.0.9"
+    "botpress-discord": "^2.0.9",
+    "forever": "^0.15.3",
+    "react": "^15.4.2"
   },
   "scripts": {
     "start": "botpress start",
