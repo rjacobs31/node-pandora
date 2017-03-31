@@ -10,7 +10,7 @@ module.exports = function(bp) {
     factoids.getResponse(bp, event)
     .then(responses => {
       if (responses && responses.length > 0) {
-        let idx = Math.floor(Math.random()*(responses.length + 1));
+        let idx = Math.floor(Math.random()*(responses.length));
         if ('response' in responses[idx]) {
           bp.discord.sendText(event.channel.id, responses[idx].response);
         }
