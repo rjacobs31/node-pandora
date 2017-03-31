@@ -5,7 +5,7 @@ module.exports = {
   development: {
     client: 'sqlite3',
     connection: {
-      filename: './dev.sqlite3'
+      filename: './data/db.sqlite'
     },
     migrations: {
       tableName: 'knex_migrations'
@@ -31,9 +31,9 @@ module.exports = {
   production: {
     client: 'postgresql',
     connection: {
-      database: 'my_db',
-      user:     'username',
-      password: 'password'
+      database: process.env.PG_DB || '',
+      password: process.env.PG_PASSWORD || '',
+      user: process.env.PG_USER || ''
     },
     pool: {
       min: 2,
