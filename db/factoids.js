@@ -4,11 +4,9 @@ module.exports = function() {
   function stripFactoid(str) {
     if (!str) return null;
 
-    str = str.toLowerCase();
-    str.replace(/\b[.,!?][ ]+/g, ' ');
-    str.replace(/[.,!?]$/, '');
-
-    return str;
+    return str.toLowerCase()
+              .replace(/\b[.,!?][ ]+/g, ' ');
+              .replace(/[.,!?]$/, '');
   }
 
   function getResponse(bp, message) {
