@@ -13,6 +13,10 @@
     "start": "botpress start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "R. Jacobs",
+  "repository": {
+      "type": "git",
+      "url": "https://github.com/rjacobs31/node-pandora.git"
+  },
   "license": "AGPL-3.0"
 }
