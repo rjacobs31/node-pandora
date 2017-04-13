@@ -1,6 +1,16 @@
 let Promise = require('bluebird');
 
 module.exports = function() {
+  function stripFactoid(str) {
+    if (!str) return null;
+
+    str = str.toLowerCase();
+    str.replace(/\b[.,!?][ ]+/g, ' ');
+    str.replace(/[.,!?]$/, '');
+
+    return str;
+  }
+
   function getResponse(bp, message) {
     if (message.text) {
       return bp.db.get().then(knex => {
@@ -10,7 +20,7 @@ module.exports = function() {
             'factoid_responses',
             'factoid_triggers.id',
             'factoid_responses.trigger_id'
-          ).where({'factoid_triggers.trigger': message.text.toLowerCase()});
+          ).where({'factoid_triggers.trigger': stripFactoid(message.text)});
       });
     } else {
       return null;
