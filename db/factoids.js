@@ -25,5 +25,8 @@ module.exports = function() {
     }
   }
 
-  return { 'getResponse': getResponse };
+  return {
+    'getResponse': getResponse,
+    'stripFactoid': stripFactoid
+  };
 };
