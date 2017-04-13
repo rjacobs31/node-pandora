@@ -5,7 +5,7 @@ module.exports = function() {
     if (!str) return null;
 
     return str.toLowerCase()
-              .replace(/\b[.,!?][ ]+/g, ' ');
+              .replace(/\b[.,!?][ ]+/g, ' ')
               .replace(/[.,!?]$/, '');
   }
 
