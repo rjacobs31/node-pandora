@@ -9,10 +9,18 @@
     "forever": "^0.15.3",
     "react": "^15.4.2"
   },
+  "devDependencies": {
+      "chai": "*",
+      "mocha": "*"
+  },
   "scripts": {
     "start": "botpress start",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
-  "author": "",
+  "author": "R. Jacobs",
+  "repository": {
+      "type": "git",
+      "url": "https://github.com/rjacobs31/node-pandora.git"
+  },
   "license": "AGPL-3.0"
 }

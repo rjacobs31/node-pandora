@@ -5,7 +5,7 @@ module.exports = function() {
     if (!str) return null;
 
     return str.toLowerCase()
-              .replace(/\b[.,!?][ ]+/g, ' ')
+              .replace(/\b[.,!?]\s+/g, ' ')
               .replace(/[.,!?]$/, '');
   }
 
@@ -25,5 +25,8 @@ module.exports = function() {
     }
   }
 
-  return { 'getResponse': getResponse };
+  return {
+    'getResponse': getResponse,
+    'stripFactoid': stripFactoid
+  };
 };
