@@ -63,7 +63,7 @@ module.exports = function() {
         .from('factoid_triggers')
         .where({'trigger': newTrigger});
 
-      oldIdPromise.then(data => {
+      return oldIdPromise.then(data => {
         if (data && data.length > 0) {
           let id = data[0].id;
           return addFactoidResponse(bp, id, newResponse);
