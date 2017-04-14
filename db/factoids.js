@@ -52,7 +52,7 @@ module.exports = function() {
    */
   function addFactoidResponse(bp, triggerId, newResponse) {
     return bp.db.get().then(knex => {
-      return knex('factoid_triggers')
+      return knex('factoid_responses')
         .insert({'trigger_id': triggerId, 'response': newResponse});
     });
   }
