@@ -10,11 +10,15 @@ module.exports = function(bp) {
     if (triggerStopIdx > 0) {
       let newTrigger = factoids.stripFactoid(command.slice(0, triggerStopIdx));
       let newResponse = command;
-      bp.discord.sendText(
-        event.channel.id,
-        'I detected an "is" command.\n' +
-        '```Trigger: ' + newTrigger + '```\n' +
-        '```Response: ' + newResponse + '```');
+      factoids.addFactoid(bp, newTrigger, newResponse)
+        .catch(() => {
+          bp.discord.sendText(event.channel.id, 'Sorry, I couldn\'t process that factoid.');
+        })
+        .then(() => {
+          bp.discord.sendText(
+            event.channel.id,
+            'Okay, remembering that "' + newTrigger + '" is "' + newResponse + '"');
+        });
     } else {
       bp.discord.sendText(event.channel.id, 'Sorry, I don\'t understand.');
     }
