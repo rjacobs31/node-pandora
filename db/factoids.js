@@ -1,5 +1,3 @@
-let Promise = require('bluebird');
-
 module.exports = function() {
   /**
    * Strips factoid trigger text of undesired punctuation.
@@ -13,6 +11,7 @@ module.exports = function() {
 
     return str.toLowerCase()
               .replace(/\b[.,!?]\s+/g, ' ')
+              .replace(/^\s+|\s+$/g, '')
               .replace(/[.,!?]$/, '');
   }
 
