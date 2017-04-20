@@ -22,6 +22,17 @@ module.exports = function(bp) {
         newResponse = command;
       }
 
+      if (!newTrigger && !newResponse) {
+        bp.discord.sendText(event.channel.id, 'Sorry, empty trigger and response not allowed.');
+        return;
+      } else if (!newTrigger) {
+        bp.discord.sendText(event.channel.id, 'Sorry, empty trigger not allowed.');
+        return;
+      } else if (!newResponse) {
+        bp.discord.sendText(event.channel.id, 'Sorry, empty response not allowed.');
+        return;
+      }
+
       factoids.addFactoid(bp, newTrigger, newResponse)
         .catch(() => {
           bp.discord.sendText(event.channel.id, 'Sorry, I couldn\'t process that factoid.');
