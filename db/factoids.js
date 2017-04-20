@@ -1,3 +1,5 @@
+let Promise = require('bluebird');
+
 module.exports = function() {
   /**
    * Strips factoid trigger text of undesired punctuation.
@@ -25,8 +27,6 @@ module.exports = function() {
             'factoid_responses.trigger_id'
           ).where({'factoid_triggers.trigger': stripFactoid(message.text)});
       });
-    } else {
-      return null;
     }
   }
 
