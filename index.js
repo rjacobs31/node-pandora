@@ -15,6 +15,7 @@ module.exports = function(bp) {
       let newResponse;
 
       if (command.search(reIsReply) >= 0) {
+        triggerStopIdx = command.search(reIsReply);
         newTrigger = factoids.stripFactoid(command.slice(0, triggerStopIdx));
         newResponse = command.substring(triggerStopIdx).replace(reIsReply, '');
       } else {
