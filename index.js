@@ -6,6 +6,7 @@ module.exports = function(bp) {
   bp.hear({platform: 'discord', text: addressRegex}, event => {
     const reIs = /\s+is\s+/;
     const reIsReply = /\s+is\s+[<]reply[>]/;
+    const reIsAction = /\s+is\s+[<]action[>]\s*/;
 
     let command = event.text.replace(addressRegex, '');
     let triggerStopIdx = command.search(reIs);
@@ -18,6 +19,10 @@ module.exports = function(bp) {
         triggerStopIdx = command.search(reIsReply);
         newTrigger = factoids.stripFactoid(command.slice(0, triggerStopIdx));
         newResponse = command.substring(triggerStopIdx).replace(reIsReply, '');
+      } else if (command.search(reIsAction) >= 0) {
+        triggerStopIdx = command.search(reIsReply);
+        newTrigger = factoids.stripFactoid(command.slice(0, triggerStopIdx));
+        newResponse = command.substring(triggerStopIdx).replace(reIsReply, '/me ');
       } else {
         newTrigger = factoids.stripFactoid(command.slice(0, triggerStopIdx));
         newResponse = command;
