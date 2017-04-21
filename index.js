@@ -20,9 +20,9 @@ module.exports = function(bp) {
         newTrigger = factoids.stripFactoid(command.slice(0, triggerStopIdx));
         newResponse = command.substring(triggerStopIdx).replace(reIsReply, '');
       } else if (command.search(reIsAction) >= 0) {
-        triggerStopIdx = command.search(reIsReply);
+        triggerStopIdx = command.search(reIsAction);
         newTrigger = factoids.stripFactoid(command.slice(0, triggerStopIdx));
-        newResponse = command.substring(triggerStopIdx).replace(reIsReply, '/me ');
+        newResponse = command.substring(triggerStopIdx).replace(reIsAction, '/me ');
       } else {
         newTrigger = factoids.stripFactoid(command.slice(0, triggerStopIdx));
         newResponse = command;
