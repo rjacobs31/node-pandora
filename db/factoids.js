@@ -67,7 +67,7 @@ module.exports = function() {
           let id = data[0].id;
           return addFactoidResponse(bp, id, newResponse);
         } else {
-          addFactoidTrigger(bp, newTrigger)
+          return addFactoidTrigger(bp, newTrigger)
             .then(data => {
               return addFactoidResponse(bp, data[0], newResponse);
             });
