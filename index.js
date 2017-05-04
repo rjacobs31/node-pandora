@@ -3,6 +3,11 @@ module.exports = function(bp) {
   const addressRegex = /^pan(dora)?:\s*/i;
   bp.middlewares.load();
 
+  bp.hear({platform: 'discord', text: /banana/i}, (event, next) => {
+    bp.discord.raw.addMessageReaction(event.channel.id, event.raw.id, '\u{1f60d}');
+    next();
+  });
+
   bp.hear({platform: 'discord', text: addressRegex}, event => {
     const reIs = /\s+is\s+/;
     const reIsReply = /\s+is\s+[<]reply[>]/;
