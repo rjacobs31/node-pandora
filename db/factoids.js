@@ -35,7 +35,7 @@ module.exports = function() {
           let replacer = {
             who: `<@${message.user.id}>`,
             someone: _.once(() => {
-              if ('raw' in bp.discord) {
+              try {
                 if ('recipients' in message.channel) {
                   let user = _.sample(message.channel.recipients);
                   return `<@${user.id}>`;
@@ -45,7 +45,7 @@ module.exports = function() {
                 } else {
                   return 'someone';
                 }
-              } else {
+              } catch (e) {
                 return 'someone';
               }
             })
