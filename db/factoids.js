@@ -1,3 +1,7 @@
+const Promise = require('bluebird');
+const strings = require('../utils/strings');
+const _ = require('lodash');
+
 module.exports = function() {
   /**
    * Strips factoid trigger text of undesired punctuation.
@@ -25,6 +29,17 @@ module.exports = function() {
             'factoid_triggers.id',
             'factoid_responses.trigger_id'
           ).where({'factoid_triggers.trigger': stripFactoid(message.text)});
+      })
+      .then(responses => {
+        if (responses && responses.length > 0) {
+          let replacer = {
+            who: `<@${message.user.id}>`
+          };
+          let response = _.sample(responses).response;
+          return Promise.resolve(strings.stringTemplateReplace(response, replacer));
+        } else {
+          return Promise.resolve(null);
+        }
       });
     }
   }

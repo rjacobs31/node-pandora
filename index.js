@@ -61,12 +61,9 @@ module.exports = function(bp) {
   bp.hear({platform: 'discord'}, event => {
     if (event.text) {
       factoids.getResponse(bp, event)
-      .then(responses => {
-        if (responses && responses.length > 0) {
-          let idx = Math.floor(Math.random()*(responses.length));
-          if ('response' in responses[idx]) {
-            bp.discord.sendText(event.channel.id, responses[idx].response);
-          }
+      .then(response => {
+        if (response) {
+          bp.discord.sendText(event.channel.id, response);
         }
       });
     }
