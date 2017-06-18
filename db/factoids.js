@@ -33,7 +33,22 @@ module.exports = function() {
       .then(responses => {
         if (responses && responses.length > 0) {
           let replacer = {
-            who: `<@${message.user.id}>`
+            who: `<@${message.user.id}>`,
+            someone: _.once(() => {
+              if ('raw' in bp.discord) {
+                if ('recipients' in message.channel) {
+                  let user = _.sample(message.channel.recipients);
+                  return `<@${user.id}>`;
+                } else if ('guild' in message.channel) {
+                  let user = _.sample(message.channel.guild.members);
+                  return `<@${user.id}>`;
+                } else {
+                  return 'someone';
+                }
+              } else {
+                return 'someone';
+              }
+            })
           };
           let response = _.sample(responses).response;
           return Promise.resolve(strings.stringTemplateReplace(response, replacer));
