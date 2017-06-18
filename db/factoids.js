@@ -37,10 +37,10 @@ module.exports = function() {
             someone: _.once(() => {
               try {
                 if ('recipients' in message.channel) {
-                  let user = _.sample(message.channel.recipients);
+                  let user = message.channel.recipients.random();
                   return `<@${user.id}>`;
-                } else if ('guild' in message.channel) {
-                  let user = _.sample(message.channel.guild.members);
+                } else if ('guild' in message.channel && 'member' in message.channel.guild) {
+                  let user = message.channel.guild.members.random();
                   return `<@${user.id}>`;
                 } else {
                   return 'someone';
