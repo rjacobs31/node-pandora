@@ -4,14 +4,16 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "bluebird": "^3.5.0",
     "botpress": "0.x",
     "botpress-discord": "^2.0.9",
     "forever": "^0.15.3",
+    "lodash": "^4.17.4",
     "react": "^15.4.2"
   },
   "devDependencies": {
-      "chai": "*",
-      "mocha": "*"
+    "chai": "*",
+    "mocha": "*"
   },
   "scripts": {
     "start": "botpress start",
@@ -19,8 +21,8 @@
   },
   "author": "R. Jacobs",
   "repository": {
-      "type": "git",
-      "url": "https://github.com/rjacobs31/node-pandora.git"
+    "type": "git",
+    "url": "https://github.com/rjacobs31/node-pandora.git"
   },
   "license": "AGPL-3.0"
 }
