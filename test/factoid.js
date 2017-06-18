@@ -1,5 +1,3 @@
-/* eslint-env mocha */
-
 let expect = require('chai').expect;
 let factoids = require('../db/factoids')();
 
